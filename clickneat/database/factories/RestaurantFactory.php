@@ -17,8 +17,7 @@ class RestaurantFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            // 'created_at' => now(),
+            'name' => fake()->company(),
         ];
     }
 }
