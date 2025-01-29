@@ -28,6 +28,6 @@ class DatabaseSeeder extends Seeder
         //     'name' => "restoto"
         // ]);
 
-        Restaurant::factory(1000)->create();
+        Restaurant::factory(3)->create();
     }
 }
