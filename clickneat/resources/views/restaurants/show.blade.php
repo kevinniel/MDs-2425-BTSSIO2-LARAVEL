@@ -12,5 +12,15 @@
         <li>created_at : {{ $restaurant->created_at }}</li>
         <li>updated_at : {{ $restaurant->updated_at }}</li>
     </ul>
+
+    <h2>Catégories</h2>
+
+    <ul>
+        @foreach($restaurant->categories as $category)
+            <li>
+                <a href="{{ route('categories.show', $category->id) }}" title="Voir la catégorie">{{ $category->name }}</a>
+            </li>
+        @endforeach
+    </ul>
     
 @endsection
