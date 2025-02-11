@@ -2,11 +2,11 @@
 
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
 
 Route::get('/restaurants', [RestaurantController::class, 'index'])->name('restaurants.index');
 Route::get('/restaurants/{id}/show', [RestaurantController::class, 'show'])->name('restaurants.show');

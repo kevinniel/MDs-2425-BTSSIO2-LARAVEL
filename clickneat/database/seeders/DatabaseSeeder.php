@@ -31,6 +31,6 @@ class DatabaseSeeder extends Seeder
 
         Restaurant::factory(3)->create();
         
-        Category::factory(1200)->create();
+        Category::factory(12)->create();
     }
 }

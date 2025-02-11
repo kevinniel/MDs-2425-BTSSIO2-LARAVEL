@@ -1,39 +1,43 @@
 @extends('layout.main')
 
 @section('main')
-    <h1>Restaurants</h1>
 
-    <a href="{{ route('restaurants.create') }}">Créer un restaurant</a>
-
-    <table border="1">
+<div class="card mb-4">
+    <div class="card-header"><h3 class="card-title">Restaurants</h3></div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <table class="table table-bordered">
         <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nom</th>
-                <th>Actions</th>
-            </tr>
+          <tr>
+            <th style="width: 10px">id</th>
+            <th>Nom</th>
+            <th>Actions</th>
+          </tr>
         </thead>
         <tbody>
             @foreach($restaurants as $restaurant)
-                <tr>
+                <tr class="align-middle">
                     <td>{{ $restaurant->id }}</td>
                     <td>{{ $restaurant->name }}</td>
                     <td>
                         <div style="display: flex;">
-                            <a style="margin-right: 8px;" href="{{ route('restaurants.show', $restaurant->id) }}">Voir</a>
-                            <a style="margin-right: 8px;" href="{{ route('restaurants.edit', $restaurant->id) }}">Modifier</a>
+                            <a class="btn btn-info mx-2" href="{{ route('restaurants.show', $restaurant->id) }}">Voir</a>
+                            <a class="btn btn-warning mx-2" href="{{ route('restaurants.edit', $restaurant->id) }}">Modifier</a>
                             <form action="{{ route('restaurants.destroy', $restaurant->id) }}" method="POST">
                                 @csrf
                                 @method('delete')
                                 <input type="hidden" name="id" value="{{ $restaurant->id }}">
-                                <button type="submit">Supprimer</button>
+                                <button type="submit" class="btn btn-danger mx-2">Supprimer</button>
                             </form>
                         </div>
                     </td>
                 </tr>
             @endforeach
         </tbody>
-    </table>
+      </table>
+    </div>
+    <!-- /.card-body -->
+</div>
 @endsection
 
 @section('scripts')
