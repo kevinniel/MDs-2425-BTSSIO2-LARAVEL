@@ -130,3 +130,67 @@ Pour cela, vous pouvez par exemple faire l'une des requêtes suivantes :
     # Renverra a la fois le model B, en y incluant dans les relations, le ou les objets "A" correspondant(s) en base de données
     $obj = B::where('id', $id)->with('as')->first();
 ```
+
+## Authentification - Breeze
+
+Installer les dépendances de Breeze :
+```
+composer require laravel/breeze --dev
+```
+
+
+Installer Breeze :
+```
+php artisan breeze:install
+```
+
+Liste des choix : 
+- Blade with Alpine
+- No
+- PEST
+
+Installer les dépendances NPM nécessaires pour que les vues de l'authentification de base fonctionnent : 
+
+```
+npm install
+```
+
+Builder les vues pour qu'elles soient accessible sans serveur front lancé
+
+```
+npm run build
+```
+
+A partir de là, les routes `/login` et `/register` sont disponibles et fonctionnelles.
+
+Attention, pensez à sauvegarder vos routes avant 😁
+
+Vous pouvez maintenant restreindre l'accès aux routes en leur appliquant le middleware `auth`. Voici un exemple avec un groupement de routes : 
+
+```
+Route::middleware('auth')->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
+
+    Route::get('/restaurants', [RestaurantController::class, 'index'])->name('restaurants.index');
+    Route::get('/restaurants/{id}/show', [RestaurantController::class, 'show'])->name('restaurants.show');
+    Route::get('/restaurants/create', [RestaurantController::class, 'create'])->name('restaurants.create');
+    Route::post('/restaurants', [RestaurantController::class, 'store'])->name('restaurants.store');
+    Route::get('/restaurants/{id}/edit', [RestaurantController::class, 'edit'])->name('restaurants.edit');
+    Route::put('/restaurants/{id}/update', [RestaurantController::class, 'update'])->name('restaurants.update');
+    Route::delete('/restaurants/{id}/destroy', [RestaurantController::class, 'destroy'])->name('restaurants.destroy');
+
+    Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+    Route::get('/categories/{id}/show', [CategoryController::class, 'show'])->name('categories.show');
+    Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
+    Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
+    Route::get('/categories/{id}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
+    Route::put('/categories/{id}/update', [CategoryController::class, 'update'])->name('categories.update');
+    Route::delete('/categories/{id}/destroy', [CategoryController::class, 'destroy'])->name('categories.destroy');
+});
+```
+
+### Accéder à l'utilisateur courant depuis Blade ou un Controller
+
+```
+Auth::user()
+```
