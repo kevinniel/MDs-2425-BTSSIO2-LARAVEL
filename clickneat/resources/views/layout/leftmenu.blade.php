@@ -33,19 +33,23 @@
               <p>Dashboard</p>
             </a>
           </li>
-          <li class="nav-header">RESTAURANTS</li>
-          <li class="nav-item">
-            <a href="{{ route('restaurants.index') }}" class="nav-link">
-              <i class="nav-icon bi bi-house"></i>
-              <p>Restaurants</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('restaurants.index') }}" class="nav-link">
-              <i class="nav-icon bi bi-house-add"></i>
-              <p>Ajouter</p>
-            </a>
-          </li>
+          @if(Auth::user())
+            @if(Auth::user()->id == 2)
+              <li class="nav-header">RESTAURANTS</li>
+              <li class="nav-item">
+                <a href="{{ route('restaurants.index') }}" class="nav-link">
+                  <i class="nav-icon bi bi-house"></i>
+                  <p>Restaurants</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('restaurants.index') }}" class="nav-link">
+                  <i class="nav-icon bi bi-house-add"></i>
+                  <p>Ajouter</p>
+                </a>
+              </li>
+            @endif
+          @endif
           <li class="nav-header">CATEGORIES</li>
           <li class="nav-item">
             <a href="{{ route('categories.index') }}" class="nav-link">
