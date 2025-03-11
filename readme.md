@@ -203,12 +203,26 @@ Il y a déjà toujours des tests de base intégrés dans Laravel. Pour les exéc
 php artisan test
 ```
 
+Générer un rapport de coverage en plus en HTML dans le dossier `coverage-report` : 
+
+```
+php artisan test --coverage-html coverage-report
+```
+
 ### 0. Configuration
 
 Ajouter cette ligne au début du fichier `/tests/Pest.php` : 
 
 ```
 uses(Tests\TestCase::class, Illuminate\Foundation\Testing\RefreshDatabase::class)->in('Feature', 'Unit');
+```
+
+et toujours dans le même fichier `/tests/Pest.php`, commenter les lignes suivantes : 
+
+```
+// pest()->extend(Tests\TestCase::class)
+//     ->use(Illuminate\Foundation\Testing\RefreshDatabase::class)
+//     ->in('Feature');
 ```
 
 Pour info : 
