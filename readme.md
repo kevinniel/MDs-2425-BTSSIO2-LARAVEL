@@ -194,3 +194,48 @@ Route::middleware('auth')->group(function () {
 ```
 Auth::user()
 ```
+
+## Tests avec PEST
+
+Il y a déjà toujours des tests de base intégrés dans Laravel. Pour les exécuter : 
+
+```
+php artisan test
+```
+
+### 0. Configuration
+
+Ajouter cette ligne au début du fichier `/tests/Pest.php` : 
+
+```
+uses(Tests\TestCase::class, Illuminate\Foundation\Testing\RefreshDatabase::class)->in('Feature', 'Unit');
+```
+
+Pour info : 
+- `Tests\TestCase::class` : permet de faire fonctionner les facades dans les tests (Class::machin)
+- `Illuminate\Foundation\Testing\RefreshDatabase::class` : faire en sorte que la BDD se refresh à chaque exécution des tests
+
+### 1. Supprimer tous les fichiers de tests existants
+
+Dans les dossiers suivants : 
+```
+/tests/Feature
+/tests/Unit
+```
+
+Ne pas supprimers les fichiers suivants :
+
+```
+/tests/Pest.php
+/tests/TestCase.php
+```
+
+### 2. Tester le Model User
+
+Créer le fichier correspondant : 
+
+```
+/tests/Unit/UserModelTest.php
+```
+
+Ecrire vos tests sur ce model dedans.
