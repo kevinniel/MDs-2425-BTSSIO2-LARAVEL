@@ -3,9 +3,6 @@
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
-// uses(Tests\TestCase::class, Illuminate\Foundation\Testing\RefreshDatabase::class)->in('Feature', 'Unit');
-// uses(Illuminate\Foundation\Testing\RefreshDatabase::class)->in('Feature', 'Unit');
-
 it('peut créer un utilisateur et un ID lui est attribué automatiquement', function () {
     $user = User::factory()->create();
 
