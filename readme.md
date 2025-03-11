@@ -252,4 +252,22 @@ Créer le fichier correspondant :
 /tests/Unit/UserModelTest.php
 ```
 
-Ecrire vos tests sur ce model dedans.
+Ecrire vos tests sur ce model dedans.$
+
+## Installer XDebug
+
+- RDV sur https://xdebug.org/download
+- Téléchargez le fichier binaire qui correspond à votre version de php
+- ajouter le fichier `.dll` téléchargé dans le dossier `ext` de `PHP`
+- Ajouter ces lignes dans votre fichier `php.ini` pour activer Xdebug :
+
+PENSEZ A CHANGER VOTRE CHEMIN :
+
+```
+[Xdebug]
+zend_extension="C:\path\to\php\ext\php_xdebug.dll"
+xdebug.mode=coverage
+xdebug.start_with_request=no
+```
+
+normalement si vous tapez maintenant `php -v` dans votre terminal, vous devriez voir un message avec XDebug apparaitre.
