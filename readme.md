@@ -258,7 +258,7 @@ Ecrire vos tests sur ce model dedans.$
 
 - RDV sur https://xdebug.org/download
 - Téléchargez le fichier binaire qui correspond à votre version de php
-- ajouter le fichier `.dll` téléchargé dans le dossier `ext` de `PHP` (prenez la version TS)
+- ajouter le fichier `.dll` téléchargé dans le dossier `ext` de `PHP` (prenez la version TS). Pensez aussi à bien rename votre `.dll` (`php_xdebug.dll`)
 - Ajouter ces lignes dans votre fichier `php.ini` pour activer Xdebug :
 
 PENSEZ A CHANGER VOTRE CHEMIN :
